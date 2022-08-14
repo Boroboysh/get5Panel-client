@@ -1,0 +1,49 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper {
+
+}
+
+.teams {
+    display: flex;
+    justify-content: space-around;
+    background-color: #a0ffc9;
+}
+
+.step1 {
+    border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+}
+
+.step2 {
+    border: 1px solid orange;
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+}
+
+.step3 {
+    border: 1px solid green;
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+}
+
+.team {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+}
+
+.teamName {
+    font-weight: 600;
+}
+
+.score {
+
+}

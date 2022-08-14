@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.wrap {
+
+}
+
+.wrapper {
+
+}
+
+.formConfiig {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.formConfiig input {
+}
