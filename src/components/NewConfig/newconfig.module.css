@@ -11,12 +11,67 @@
 
 }
 
-.formConfiig {
+.formConfig {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.formConfiig input {
+.veto_first {
+    display: flex;
+}
+
+.formConfig input {
+}
+
+.formConfig_num_maps {
+    display: flex;
+}
+
+.formConfig_num_maps p {
+    margin-right: 10px;
+    color: red;
+}
+
+.maplist h2{
+    color: red;
+}
+
+.skip_veto {
+    display: flex;
+}
+
+.skip_veto p {
+    margin-right: 10px;
+}
+
+.syde_type {
+    display: flex;
+}
+
+.syde_type p {
+    margin-right: 10px;
+}
+
+.team {
+    display: flex;
+    flex-direction: column;
+}
+
+.players {
+    display: flex;
+    flex-direction: column;
+}
+
+#matchid {
+    border: red 2px solid;
+}
+
+#teamName {
+    border: red 2px solid;
+}
+
+#player {
+    border: red 2px solid;
 }
