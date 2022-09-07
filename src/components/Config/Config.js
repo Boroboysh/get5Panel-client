@@ -1,68 +1,63 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import styles from './config.module.css';
 import axios from "axios";
-import {useParams} from "react-router-dom";
-
+import {Link, useParams} from "react-router-dom";
 
 let Config = () => {
     let [status, setStatus] = useState("");
+    let [isFetching, setFetching] = useState(false)
 
     let {filename} = useParams();
 
-/*    async function getCurrentConfig() {
-        axios.get(`http://192.168.0.107:8000/configList/${filename}`)
+    useEffect(() => {
+        axios.get(`http://192.168.0.107:8000/rcon/currentMatch`)
             .then((response) => {
-                console.log(response.data)
-
-                console.log('Заебись ' + {filename})
+                setStatus(response.data)
             })
-    }*/
+    })
 
     async function startMatch () {
+        setFetching(true)
+
         axios.get(`http://192.168.0.107:8000/rcon/start/${filename}`)
             .then((response) => {
-                console.log(response.data)
+                alert(response.data)
+                setFetching(false)
             })
     }
 
     async function endMatch () {
+        setFetching(true)
+
         axios.get(`http://192.168.0.107:8000/rcon/end`)
             .then((response) => {
-                console.log(response.data)
-            })
-    }
-
-    async function getStatusServer () {
-        axios.get(`http://192.168.0.107:8000/rcon/status`)
-            .then((response) => {
-                console.log(response.data)
-                let data = "";
-
-                data = JSON.parse(response.data);
-
-                setStatus(data)
+                alert(response.data)
+                setFetching(false)
             })
     }
 
     return (
         <div>
+            <Link to="/configList">Back</Link>
             <h3>Config</h3>
             <section className={styles.wrap}>
                 <div>
                     Filename: {filename}
                 </div>
+                <div>
+                    Статус: {status === filename ? <span className={styles.active}>Запущен</span> : <span className={styles.inactive}>Не запущен</span>}
+                    {status === "" ? <div className={styles.loading}>Загрузка...</div> : null}
+                </div>
                 <button onClick={startMatch}>Start Match</button>
                 <button onClick={endMatch}>End Match</button>
-                <button onClick={getStatusServer}>Get Status</button>
-                <div>
-                    {status}
-                </div>
+
+                {isFetching === true ? <div className={styles.loading}>Загрузка...</div> : null}
             </section>
         </div>
     )
 }
 
-/*class Config extends React.Component {
+/*class ConfigContainer extends React.Component {
     constructor(props) {
         super(props);
 

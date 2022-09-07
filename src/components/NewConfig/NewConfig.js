@@ -171,7 +171,7 @@ class NewConfig extends React.Component {
         if (this.state.maplist.length !== this.state.num_maps) {
             alert('Num maps does not correspond maplist')
         } else {
-            await axios.post('http://192.168.0.107:8000/config/new', jsonState, config)
+            await axios.post('http://127.0.0.1:8000/config/new', jsonState, config)
                 .then((response) => {
                     console.log(response)
                     alert('Усешно! Конфиг создан. Название файла: ' + this.state.matchid + '.json')

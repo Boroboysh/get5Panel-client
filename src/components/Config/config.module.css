@@ -9,3 +9,15 @@
     align-items: center;
     justify-content: center;
 }
+
+.active {
+    color: green;
+}
+
+.inactive {
+    color: red;
+}
+
+.loading {
+    color: orange;
+}

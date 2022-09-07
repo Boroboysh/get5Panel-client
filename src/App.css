@@ -1,3 +1,16 @@
 .App {
   text-align: center;
 }
+
+.header-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.app-login {
+  display: flex;
+  justify-content: end;
+  margin-right: 50px;
+}
