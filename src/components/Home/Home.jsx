@@ -1,17 +1,44 @@
 import React from "react";
-import {Link} from "react-router-dom";
-import styles from './home.module.css';
+import {Link, Route, Routes} from "react-router-dom";
+import styles from './loggedin.module.css';
+import Home from "../Home/Home";
+import AuthMiddleware from "../AuthMiddleware/AuthMiddleware";
+import NewConfig from "../NewConfig/NewConfig";
+import ConfigList from "../ConfigList/ConfigList";
+import Config from "../Config/Config";
+import Login from "../Login/Login";
+import NotFound from "../NotFound/NotFound";
 
-let Home = () => {
+let IsLoggedIn = (props) => {
+    let logOut = () => {
+        localStorage.clear();
+        props.setIsLogged(false)
+    }
+
     return (
-        <div>
-            <h3>Home Page</h3>
-            <section className={styles.wrap}>
-                <Link to="/newConfig">Create New Config</Link>
-                <Link to="/configList">My configs</Link>
-            </section>
+        <div className={styles.wrap}>
+            <header className={styles.header}>
+                <section className={styles.header_content}>
+                    <button onClick={logOut}>Log out</button>
+                    <h3>Header</h3>
+                    <Link to="/">Go to main page</Link>
+                </section>
+            </header>
+            <Routes>
+                <Route element={<Home/>} path="/"/>
+                <Route element={<AuthMiddleware/>} path="/auth/:token"/>
+
+                <Route element={<NewConfig/>} path="/newConfig"/>
+                <Route element={<ConfigList/>} path="/configList"/>
+                <Route element={<Config/>} path="/config/:filename"/>
+
+                <Route element={<Login/>} path="/login"/>
+
+                <Route element={<NotFound/>} path="*"/>
+                {/*<Route path="/redirectToLogin" element={ <Navigate to='/configList'/>}/>*/}
+            </Routes>
         </div>
-    );
+    )
 }
 
-export default Home;
+export default IsLoggedIn;
