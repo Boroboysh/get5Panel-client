@@ -1,20 +1,13 @@
 import React from "react";
-import styles from "./login.module.css"
-import axios from "axios";
-import {Link} from "react-router-dom";
+import styles from "./login.module.css";
 
 let Login = () => {
     return (
         <div className={styles.wrap}>
-            <h2>Login Page</h2>
-            <div className={styles.form}>
-                <input placeholder="Nickname" type="text"/>
-                <input placeholder="Password" type="password"/>
-                <input type="button" value="Войти"/>
-            </div>
-            <Link to="/register">Ещё не зарегистрированы?</Link>
+            <a href="http://127.0.0.1:8000/login" target="_blank" rel="noopener">Log In (Steam)</a>
         </div>
     )
 }
 
 export default Login;
+

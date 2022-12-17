@@ -4,7 +4,7 @@ import axios from "axios";
 import {Link, useParams} from "react-router-dom";
 
 let Config = () => {
-    let [status, setStatus] = useState("");
+    let [currentMatch, setCurrentMatch] = useState("");
     let [isFetching, setFetching] = useState(false)
 
     let {filename} = useParams();
@@ -12,7 +12,7 @@ let Config = () => {
     useEffect(() => {
         axios.get(`http://192.168.0.107:8000/rcon/currentMatch`)
             .then((response) => {
-                setStatus(response.data)
+                setCurrentMatch(response.data)
             })
     })
 
@@ -45,8 +45,8 @@ let Config = () => {
                     Filename: {filename}
                 </div>
                 <div>
-                    Статус: {status === filename ? <span className={styles.active}>Запущен</span> : <span className={styles.inactive}>Не запущен</span>}
-                    {status === "" ? <div className={styles.loading}>Загрузка...</div> : null}
+                    Статус: {currentMatch === filename ? <span className={styles.active}>Запущен</span> : <span className={styles.inactive}>Не запущен</span>}
+                    {currentMatch === "" ? <div className={styles.loading}>Загрузка...</div> : null}
                 </div>
                 <button onClick={startMatch}>Start Match</button>
                 <button onClick={endMatch}>End Match</button>

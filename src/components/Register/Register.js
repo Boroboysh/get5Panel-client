@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import styles from "./register.module.css"
 import axios from "axios";
 import {Link} from "react-router-dom";
@@ -43,7 +43,7 @@ class Register extends React.Component {
 
         console.log(this.state)
 
-        await axios.post('http://127.0.0.1:8000/register', jsonState, config)
+        await axios.post('http://192.168.0.114:8000/register', jsonState, config)
             .then((response) => {
                 console.log(response)
             })

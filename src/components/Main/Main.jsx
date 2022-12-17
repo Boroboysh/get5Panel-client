@@ -1,6 +1,6 @@
 import React from "react";
 import {Link, Route, Routes} from "react-router-dom";
-import styles from './loggedin.module.css';
+import styles from './main.module.css';
 import Home from "../Home/Home";
 import AuthMiddleware from "../AuthMiddleware/AuthMiddleware";
 import NewConfig from "../NewConfig/NewConfig";
@@ -22,13 +22,17 @@ let Main = (props) => {
             )
         }
 
+        let logout = () => {
+            props.setCookieState("noauth");
+            alert('You not authorized')
+        }
 
 
         return (
             <div className={styles.wrap}>
                 <header className={styles.header}>
                     <section className={styles.header_content}>
-                        <button onClick={}>Log out</button>
+                        <button onClick={logout}>Log out</button>
                         <h3>Header</h3>
                         <Link to="/">Go to main page</Link>
                     </section>

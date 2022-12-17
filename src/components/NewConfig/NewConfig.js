@@ -67,36 +67,32 @@ class NewConfig extends React.Component {
     }
 
     inputConfigChange = (e) => {
-
         let name = e.target.name;
         let value = e.target.value;
 
         this.setState({
             [name]: value
         })
-
-        console.log(`${name} - Имя`)
-        console.log(`${value} - Value`)
     }
 
     checkboxMapConfigChange = (e) => {
         let maplist = this.state.maplist
+
         if (e.target.checked) {
             maplist.push(e.target.name)
-        } else {
+        }
+        else {
             maplist = maplist.filter(i => i !== e.target.name)
         }
-        console.log(maplist)
+
         this.setState({
             maplist: maplist
         })
     }
 
     selectConfigChange = (e) => {
-        console.log(`${e.target.name} -- name`)
-        console.log(`AAAAAAAAAAAA ${e.target.value}`)
-
         let value = parseInt(e.target.value);
+
         if (isNaN(value)) {
             this.setState({
                 [e.target.name]: e.target.value
@@ -120,24 +116,17 @@ class NewConfig extends React.Component {
                 let players = this.state.team1.players;
                 players.push(player);
 
-                console.log(`Player: ${player}`)
-
                 this.setState({
                     team1: {...this.state.team1, players: players}
                 })
-
-                console.log(this.state)
-
             } else {
                 let players = this.state.team2.players;
                 players.push(player);
 
-                console.log(`Player: ${player}`)
                 this.setState({
                     team2: {...this.state.team2, players: players}
                 })
 
-                console.log(this.state)
             }
         }
     }
